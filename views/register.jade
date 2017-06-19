@@ -1,0 +1,11 @@
+extends layout
+
+block content
+  h1= title
+
+  .container
+    form(method='POST' action='/register')
+      div.form-group
+        label(for='urlRaw')
+        input#url.form-control(type='text', placeholder='Enter URL here' name='url')
+      button.btn.btn-primary(type='submit') Register URL
