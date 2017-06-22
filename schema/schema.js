@@ -4,9 +4,17 @@ mongoose.set('debug', true);
 
 // Read DB connection info from JSON config.
 jsonfile.readFile("database-connect.json", function(err, obj) {
-    if(err !== null) {
-        mongoose.connect(obj.connectionURI);
+    if(err) {
+        console.log(err);
+        return;
     }
+
+    console.log(obj);
+    mongoose.connect(obj.connectionURI, function(err) {
+        if(err) {
+            console.log(err);
+        }
+    });
 });
 
 var Counter = mongoose.model('Counter', new mongoose.Schema({
